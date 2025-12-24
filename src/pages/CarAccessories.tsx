@@ -3,10 +3,13 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { CTASection } from '@/components/CTASection';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, Check } from 'lucide-react';
+import { ArrowRight, Phone, Check, MessageCircle, Sparkles } from 'lucide-react';
 import seatCoversImg from '@/assets/service-seat-covers.jpg';
 import audioImg from '@/assets/service-audio.jpg';
 import ledImg from '@/assets/service-led.jpg';
+import ceramicImg from '@/assets/service-ceramic.jpg';
+import interiorImg from '@/assets/service-interior.jpg';
+import exteriorImg from '@/assets/service-exterior.jpg';
 
 const accessories = [
   {
@@ -15,6 +18,7 @@ const accessories = [
     image: seatCoversImg,
     features: ['Custom fit for all car models', 'Premium leather & fabric options', 'Waterproof & easy to clean', '2-year warranty included'],
     priceRange: '₹5,000 - ₹25,000',
+    whatsappMessage: 'Hi, I want to enquire about Premium Seat Covers for my car. Please share the available options and pricing.',
   },
   {
     title: 'Car Audio Systems',
@@ -22,6 +26,7 @@ const accessories = [
     image: audioImg,
     features: ['JBL, Sony, Pioneer brands', 'Subwoofers & amplifiers', 'Touchscreen head units', 'Professional installation'],
     priceRange: '₹3,000 - ₹50,000',
+    whatsappMessage: 'Hi, I want to enquire about Car Audio Systems. Please share the brands available and installation charges.',
   },
   {
     title: 'LED & Lighting Accessories',
@@ -29,6 +34,31 @@ const accessories = [
     image: ledImg,
     features: ['Ambient interior lighting', 'LED headlight upgrades', 'Underglow kits', 'DRL installations'],
     priceRange: '₹2,000 - ₹15,000',
+    whatsappMessage: 'Hi, I want to enquire about LED & Lighting accessories. Please share the options and pricing.',
+  },
+  {
+    title: 'Ceramic Coating',
+    description: 'Protect your car paint with our professional-grade ceramic coating. Long-lasting shine and protection against scratches.',
+    image: ceramicImg,
+    features: ['9H hardness protection', 'Hydrophobic water repellent', 'UV protection', '3-5 years durability'],
+    priceRange: '₹8,000 - ₹35,000',
+    whatsappMessage: 'Hi, I want to enquire about Ceramic Coating for my car. Please share the pricing and warranty details.',
+  },
+  {
+    title: 'Interior Care',
+    description: 'Complete interior restoration including deep cleaning, sanitization, and conditioning. We treat every surface.',
+    image: interiorImg,
+    features: ['Deep vacuum cleaning', 'Leather conditioning', 'Dashboard restoration', 'Odor elimination'],
+    priceRange: '₹2,500 - ₹8,000',
+    whatsappMessage: 'Hi, I want to enquire about Interior Care services. Please share the packages and pricing.',
+  },
+  {
+    title: 'Exterior Care',
+    description: 'Professional exterior care including foam wash, clay bar treatment, polishing, and waxing.',
+    image: exteriorImg,
+    features: ['Foam wash treatment', 'Clay bar decontamination', 'Paint correction', 'Hand polish & wax'],
+    priceRange: '₹1,500 - ₹6,000',
+    whatsappMessage: 'Hi, I want to enquire about Exterior Care services. Please share the packages available.',
   },
 ];
 
@@ -39,11 +69,15 @@ const CarAccessories = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <section className="section-padding bg-secondary">
-          <div className="container-custom">
+        <section className="section-padding bg-secondary relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse-glow" />
+          </div>
+          <div className="container-custom relative">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
-                Car Accessories
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+                <Sparkles className="w-4 h-4" />
+                Car Accessories & Services
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Premium Car <span className="gradient-text">Accessories</span>
@@ -51,12 +85,20 @@ const CarAccessories = () => {
               <p className="text-muted-foreground text-lg mb-8">
                 Upgrade your vehicle with top-quality accessories. Professional installation with warranty on all products.
               </p>
-              <Button variant="cta" size="xl" asChild>
-                <a href="tel:+919876543210">
-                  <Phone className="w-5 h-5" />
-                  Get Free Quote
-                </a>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="cta" size="xl" asChild>
+                  <a href="tel:+919876543210">
+                    <Phone className="w-5 h-5" />
+                    Get Free Quote
+                  </a>
+                </Button>
+                <Button variant="whatsapp" size="xl" asChild>
+                  <a href="https://wa.me/919876543210?text=Hi, I want to know about your car accessories and services." target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5" />
+                    WhatsApp Us
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -73,11 +115,11 @@ const CarAccessories = () => {
                   }`}
                 >
                   <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                    <div className="aspect-[4/3] rounded-xl overflow-hidden">
+                    <div className="aspect-[4/3] rounded-xl overflow-hidden group">
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   </div>
@@ -96,12 +138,20 @@ const CarAccessories = () => {
                       <span className="text-muted-foreground">Price Range:</span>
                       <span className="text-xl font-bold text-primary">{item.priceRange}</span>
                     </div>
-                    <Button variant="hero" size="lg" asChild>
-                      <a href="tel:+919876543210">
-                        Enquire Now
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button variant="hero" size="lg" asChild>
+                        <a href="tel:+919876543210">
+                          Enquire Now
+                          <ArrowRight className="w-4 h-4" />
+                        </a>
+                      </Button>
+                      <Button variant="whatsapp" size="lg" asChild>
+                        <a href={`https://wa.me/919876543210?text=${encodeURIComponent(item.whatsappMessage)}`} target="_blank" rel="noopener noreferrer">
+                          <MessageCircle className="w-4 h-4" />
+                          WhatsApp
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}

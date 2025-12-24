@@ -2,7 +2,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { CTASection } from '@/components/CTASection';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Sparkles } from 'lucide-react';
 
 const reviews = [
   {
@@ -25,7 +25,7 @@ const reviews = [
     name: 'Mohammed Arif',
     role: 'Hyundai Creta Owner',
     rating: 5,
-    review: 'The interior detailing service was outstanding. They cleaned every corner of my car including the AC vents. It feels like driving a new car now! Will definitely come back.',
+    review: 'The interior care service was outstanding. They cleaned every corner of my car including the AC vents. It feels like driving a new car now! Will definitely come back.',
     avatar: 'MA',
     date: 'October 2024',
   },
@@ -49,7 +49,7 @@ const reviews = [
     name: 'Anand Krishnan',
     role: 'Tata Nexon Owner',
     rating: 5,
-    review: 'Fantastic service! Got my car detailed and the results were amazing. The staff is knowledgeable and they take pride in their work. Fair pricing with no hidden charges.',
+    review: 'Fantastic service! Got my car cleaned and the results were amazing. The staff is knowledgeable and they take pride in their work. Fair pricing with no hidden charges.',
     avatar: 'AK',
     date: 'August 2024',
   },
@@ -65,7 +65,7 @@ const reviews = [
     name: 'Deepak Sharma',
     role: 'Kia Seltos Owner',
     rating: 5,
-    review: 'Got exterior detailing and paint protection done. My car literally shines like new! Water just beads off the surface. Worth every rupee spent. Thank you Friends Car!',
+    review: 'Got exterior care and paint protection done. My car literally shines like new! Water just beads off the surface. Worth every rupee spent. Thank you Friends Car!',
     avatar: 'DS',
     date: 'July 2024',
   },
@@ -78,10 +78,14 @@ const Reviews = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <section className="section-padding bg-secondary">
-          <div className="container-custom">
+        <section className="section-padding bg-secondary relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse-glow" />
+          </div>
+          <div className="container-custom relative">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+                <Sparkles className="w-4 h-4" />
                 Customer Reviews
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -102,7 +106,7 @@ const Reviews = () => {
                 <div className="text-5xl font-bold text-primary mb-2">4.4</div>
                 <div className="flex justify-center gap-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`w-5 h-5 ${i < 4 ? 'text-yellow-500 fill-yellow-500' : 'text-yellow-500/50 fill-yellow-500/50'}`} />
+                    <Star key={i} className={`w-5 h-5 ${i < 4 ? 'text-primary fill-primary' : 'text-primary/50 fill-primary/50'}`} />
                   ))}
                 </div>
                 <div className="text-muted-foreground">Based on 1200+ reviews</div>
@@ -123,7 +127,7 @@ const Reviews = () => {
               {reviews.map((review, index) => (
                 <div 
                   key={index}
-                  className="bg-card rounded-xl p-6 md:p-8 border border-border relative"
+                  className="bg-card rounded-xl p-6 md:p-8 border border-border relative hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
                 >
                   <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/20" />
                   <div className="flex items-center gap-4 mb-4">
@@ -140,7 +144,7 @@ const Reviews = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-4 h-4 ${i < review.rating ? 'text-yellow-500 fill-yellow-500' : 'text-muted'}`} 
+                          className={`w-4 h-4 ${i < review.rating ? 'text-primary fill-primary' : 'text-muted'}`} 
                         />
                       ))}
                     </div>

@@ -3,6 +3,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { CTASection } from '@/components/CTASection';
+import { Sparkles } from 'lucide-react';
 import ceramicImg from '@/assets/service-ceramic.jpg';
 import interiorImg from '@/assets/service-interior.jpg';
 import exteriorImg from '@/assets/service-exterior.jpg';
@@ -11,13 +12,13 @@ import audioImg from '@/assets/service-audio.jpg';
 import ledImg from '@/assets/service-led.jpg';
 
 const galleryImages = [
-  { src: ceramicImg, alt: 'Ceramic Coating Work', category: 'Detailing' },
-  { src: interiorImg, alt: 'Interior Detailing', category: 'Detailing' },
-  { src: exteriorImg, alt: 'Exterior Detailing', category: 'Detailing' },
+  { src: ceramicImg, alt: 'Ceramic Coating Work', category: 'Care' },
+  { src: interiorImg, alt: 'Interior Care', category: 'Care' },
+  { src: exteriorImg, alt: 'Exterior Care', category: 'Care' },
   { src: seatCoversImg, alt: 'Seat Cover Installation', category: 'Accessories' },
   { src: audioImg, alt: 'Audio System Installation', category: 'Accessories' },
   { src: ledImg, alt: 'LED Lighting Setup', category: 'Accessories' },
-  { src: ceramicImg, alt: 'Paint Protection', category: 'Detailing' },
+  { src: ceramicImg, alt: 'Paint Protection', category: 'Care' },
   { src: audioImg, alt: 'Premium Audio Setup', category: 'Accessories' },
   { src: ledImg, alt: 'Ambient Lighting', category: 'Accessories' },
 ];
@@ -35,10 +36,14 @@ const Gallery = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <section className="section-padding bg-secondary">
-          <div className="container-custom">
+        <section className="section-padding bg-secondary relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse-glow" />
+          </div>
+          <div className="container-custom relative">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+                <Sparkles className="w-4 h-4" />
                 Our Work
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -56,14 +61,14 @@ const Gallery = () => {
           <div className="container-custom">
             {/* Filter Buttons */}
             <div className="flex justify-center gap-2 mb-12">
-              {['All', 'Detailing', 'Accessories'].map((category) => (
+              {['All', 'Care', 'Accessories'].map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     filter === category 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-secondary text-muted-foreground hover:bg-muted'
+                      ? 'bg-primary text-primary-foreground scale-105' 
+                      : 'bg-secondary text-muted-foreground hover:bg-muted hover:scale-105'
                   }`}
                 >
                   {category}

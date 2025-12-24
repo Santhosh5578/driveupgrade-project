@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Phone, MessageCircle, MapPin, Clock, Mail, Send } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Mail, Send, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 
 const Contact = () => {
@@ -27,16 +27,26 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
+  const getWhatsAppLink = () => {
+    const service = formData.service || 'car accessories';
+    const name = formData.name || 'Customer';
+    return `https://wa.me/919876543210?text=Hi, I'm ${name}. I want to enquire about ${service}. Please contact me.`;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-20">
         {/* Hero */}
-        <section className="section-padding bg-secondary">
-          <div className="container-custom">
+        <section className="section-padding bg-secondary relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse-glow" />
+          </div>
+          <div className="container-custom relative">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary text-sm font-semibold rounded-full mb-4">
+                <Sparkles className="w-4 h-4" />
                 Contact Us
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -91,19 +101,27 @@ const Contact = () => {
                       className="w-full h-12 px-4 bg-secondary border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select a service</option>
-                      <option value="seat-covers">Seat Covers</option>
-                      <option value="audio-system">Car Audio System</option>
-                      <option value="led-lighting">LED & Lighting</option>
-                      <option value="ceramic-coating">Ceramic Coating</option>
-                      <option value="interior-detailing">Interior Detailing</option>
-                      <option value="exterior-detailing">Exterior Detailing</option>
-                      <option value="other">Other</option>
+                      <option value="Seat Covers">Seat Covers</option>
+                      <option value="Car Audio System">Car Audio System</option>
+                      <option value="LED & Lighting">LED & Lighting</option>
+                      <option value="Ceramic Coating">Ceramic Coating</option>
+                      <option value="Interior Care">Interior Care</option>
+                      <option value="Exterior Care">Exterior Care</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
-                  <Button type="submit" variant="cta" size="xl" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
-                    <Send className="w-5 h-5" />
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button type="submit" variant="cta" size="xl" className="flex-1" disabled={isSubmitting}>
+                      {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
+                      <Send className="w-5 h-5" />
+                    </Button>
+                    <Button type="button" variant="whatsapp" size="xl" className="flex-1" asChild>
+                      <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="w-5 h-5" />
+                        WhatsApp Instead
+                      </a>
+                    </Button>
+                  </div>
                 </form>
               </div>
 
@@ -112,7 +130,7 @@ const Contact = () => {
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Contact Information</h2>
                 
                 <div className="space-y-6 mb-8">
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
+                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl hover:border-primary/50 border border-transparent transition-colors">
                     <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/20 text-primary flex-shrink-0">
                       <MapPin className="w-6 h-6" />
                     </div>
@@ -122,7 +140,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
+                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl hover:border-primary/50 border border-transparent transition-colors">
                     <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/20 text-primary flex-shrink-0">
                       <Phone className="w-6 h-6" />
                     </div>
@@ -132,7 +150,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
+                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl hover:border-primary/50 border border-transparent transition-colors">
                     <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/20 text-primary flex-shrink-0">
                       <Mail className="w-6 h-6" />
                     </div>
@@ -142,7 +160,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl">
+                  <div className="flex items-start gap-4 p-4 bg-secondary rounded-xl hover:border-primary/50 border border-transparent transition-colors">
                     <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/20 text-primary flex-shrink-0">
                       <Clock className="w-6 h-6" />
                     </div>
@@ -163,7 +181,7 @@ const Contact = () => {
                     </a>
                   </Button>
                   <Button variant="whatsapp" size="lg" className="flex-1" asChild>
-                    <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/919876543210?text=Hi, I want to visit your store. Please share the location." target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="w-5 h-5" />
                       WhatsApp
                     </a>
