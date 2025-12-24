@@ -21,7 +21,7 @@ const testimonials = [
     name: 'Mohammed Arif',
     role: 'Hyundai Creta Owner',
     rating: 5,
-    review: 'The interior detailing service was outstanding. They cleaned every corner of my car. It feels like driving a new car now!',
+    review: 'The interior care service was outstanding. They cleaned every corner of my car. It feels like driving a new car now!',
     avatar: 'MA',
   },
   {
@@ -74,7 +74,7 @@ export const TestimonialsSection = () => {
             return (
               <div 
                 key={index}
-                className="bg-card rounded-xl p-8 border border-border relative"
+                className="bg-card rounded-xl p-8 border border-border relative hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
               >
                 <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/20" />
                 <div className="flex items-center gap-4 mb-6">
@@ -90,7 +90,7 @@ export const TestimonialsSection = () => {
                   {[...Array(5)].map((_, i) => (
                     <Star 
                       key={i} 
-                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-500 fill-yellow-500' : 'text-muted'}`} 
+                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-primary fill-primary' : 'text-muted'}`} 
                     />
                   ))}
                 </div>
@@ -117,7 +117,7 @@ export const TestimonialsSection = () => {
               {[...Array(5)].map((_, i) => (
                 <Star 
                   key={i} 
-                  className={`w-5 h-5 ${i < testimonials[currentIndex].rating ? 'text-yellow-500 fill-yellow-500' : 'text-muted'}`} 
+                  className={`w-5 h-5 ${i < testimonials[currentIndex].rating ? 'text-primary fill-primary' : 'text-muted'}`} 
                 />
               ))}
             </div>
@@ -135,8 +135,8 @@ export const TestimonialsSection = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-primary' : 'bg-muted'
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-primary scale-125' : 'bg-muted hover:bg-primary/50'
                 }`}
               />
             ))}

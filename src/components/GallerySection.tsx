@@ -7,9 +7,9 @@ import audioImg from '@/assets/service-audio.jpg';
 import ledImg from '@/assets/service-led.jpg';
 
 const galleryImages = [
-  { src: ceramicImg, alt: 'Ceramic Coating Work', category: 'Detailing' },
-  { src: interiorImg, alt: 'Interior Detailing', category: 'Detailing' },
-  { src: exteriorImg, alt: 'Exterior Detailing', category: 'Detailing' },
+  { src: ceramicImg, alt: 'Ceramic Coating Work', category: 'Care' },
+  { src: interiorImg, alt: 'Interior Care', category: 'Care' },
+  { src: exteriorImg, alt: 'Exterior Care', category: 'Care' },
   { src: seatCoversImg, alt: 'Seat Cover Installation', category: 'Accessories' },
   { src: audioImg, alt: 'Audio System Installation', category: 'Accessories' },
   { src: ledImg, alt: 'LED Lighting Setup', category: 'Accessories' },
@@ -39,14 +39,14 @@ export const GallerySection = () => {
 
         {/* Filter Buttons */}
         <div className="flex justify-center gap-2 mb-8">
-          {['All', 'Detailing', 'Accessories'].map((category) => (
+          {['All', 'Care', 'Accessories'].map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 filter === category 
-                  ? 'bg-primary text-primary-foreground' 
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  ? 'bg-primary text-primary-foreground scale-105' 
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:scale-105'
               }`}
             >
               {category}

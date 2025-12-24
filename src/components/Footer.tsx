@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Clock, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Phone, MapPin, Clock, Mail, Facebook, Instagram, Youtube, Sparkles } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -17,16 +17,16 @@ export const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground text-sm mb-6">
-              Premium car accessories & professional detailing services in Chennai. Your trusted partner for automotive excellence.
+              Premium car accessories & professional services in Chennai. Your trusted partner for automotive excellence.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
@@ -34,10 +34,12 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-primary" />
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li><Link to="/car-accessories" className="text-muted-foreground hover:text-primary transition-colors">Car Accessories</Link></li>
-              <li><Link to="/car-detailing" className="text-muted-foreground hover:text-primary transition-colors">Car Detailing</Link></li>
               <li><Link to="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Our Work</Link></li>
               <li><Link to="/reviews" className="text-muted-foreground hover:text-primary transition-colors">Reviews</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
@@ -46,20 +48,25 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-primary" />
+              Our Services
+            </h3>
             <ul className="space-y-2">
               <li><span className="text-muted-foreground">Seat Covers</span></li>
               <li><span className="text-muted-foreground">Car Audio Systems</span></li>
               <li><span className="text-muted-foreground">Ceramic Coating</span></li>
-              <li><span className="text-muted-foreground">Interior Detailing</span></li>
-              <li><span className="text-muted-foreground">Exterior Detailing</span></li>
+              <li><span className="text-muted-foreground">Interior & Exterior Care</span></li>
               <li><span className="text-muted-foreground">LED Lighting</span></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-primary" />
+              Contact Info
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />

@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Car Accessories', path: '/car-accessories' },
-  { name: 'Car Detailing', path: '/car-detailing' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'Reviews', path: '/reviews' },
   { name: 'Contact Us', path: '/contact' },
@@ -38,9 +37,9 @@ export const Header = () => {
       <div className="container-custom">
         <nav className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 group">
             <div className="flex items-center">
-              <span className="text-2xl md:text-3xl font-bold tracking-tight text-foreground" style={{ fontFamily: 'Oswald, sans-serif' }}>
+              <span className="text-2xl md:text-3xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary" style={{ fontFamily: 'Oswald, sans-serif' }}>
                 FRIENDS
               </span>
               <span className="text-2xl md:text-3xl font-bold tracking-tight text-primary" style={{ fontFamily: 'Oswald, sans-serif' }}>
@@ -55,11 +54,14 @@ export const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
                   location.pathname === link.path ? 'text-primary' : 'text-foreground/80'
                 }`}
               >
                 {link.name}
+                {location.pathname === link.path && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                )}
               </Link>
             ))}
           </div>
@@ -73,7 +75,7 @@ export const Header = () => {
               </a>
             </Button>
             <Button variant="whatsapp" size="sm" asChild>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/919876543210?text=Hi, I'm interested in your car accessories and services." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp
               </a>
@@ -116,7 +118,7 @@ export const Header = () => {
                 </a>
               </Button>
               <Button variant="whatsapp" size="lg" className="w-full" asChild>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/919876543210?text=Hi, I'm interested in your car accessories and services." target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp Us
                 </a>

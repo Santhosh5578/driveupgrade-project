@@ -4,7 +4,7 @@ const features = [
   {
     icon: Award,
     title: 'Experienced Professionals',
-    description: '10+ years of expertise in car accessories and detailing',
+    description: '10+ years of expertise in car accessories and care',
   },
   {
     icon: Shield,
@@ -53,12 +53,12 @@ export const WhyChooseSection = () => {
           {features.map((feature, index) => (
             <div 
               key={feature.title}
-              className="group p-6 md:p-8 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-300"
+              className="group p-6 md:p-8 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary/20 text-primary mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+              <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-primary/20 text-primary mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                 <feature.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
               <p className="text-muted-foreground text-sm">{feature.description}</p>
             </div>
           ))}
